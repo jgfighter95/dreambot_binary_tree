@@ -20,7 +20,7 @@ public class WoodcutterTreeBuilder extends TreeBuilder<WoodcutterContext> {
 	
 	private Node<WoodcutterContext> inventoryIsFull() {
 		return new Branch<WoodcutterContext>()
-				.validate(() -> context.treeArea.contains(Players.localPlayer()))
+				.validate(() -> Inventory.isFull()))
 				.success(new Leaf<WoodcutterContext>(new BankAction(controller, context)))
 				.fail(new Leaf<WoodcutterContext>(new WoodcuttingAction(controller, context)));
 	}
